@@ -10,13 +10,13 @@ const Header = () => {
         setOpen(!open); 
     };
 
-    useEffect(() => {
-        if (open) {
-            document.body.classList.add(style.no_scroll); 
-        } else {
-            document.body.classList.remove(style.no_scroll); 
-        }
-    }, [open]);
+    // useEffect(() => {
+    //     if (open) {
+    //         document.body.classList.add(style.no_scroll); 
+    //     } else {
+    //         document.body.classList.remove(style.no_scroll); 
+    //     }
+    // }, [open]);
 
     return (
         <header className={style.header}>
