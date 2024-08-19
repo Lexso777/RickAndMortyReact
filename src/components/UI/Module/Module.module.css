@@ -1,0 +1,67 @@
+.module__container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1000; 
+}
+.module{
+    position: relative;
+    width: 312px;
+    height: 350px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.14),0px 3px 4px 0px rgba(0, 0, 0, 0.12),0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+    background: rgb(255, 255, 255);
+}
+.btnClose{
+    position: absolute;
+    top: 10px;
+    right: 10px; 
+    width: 30px;
+    width: 30px;
+    height: 30px;
+}
+.btnClose span {
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: black;
+    transition: transform 0.3s ease;
+    left: 5px;
+    user-select: none;
+}
+.btnClose span:first-child {
+    transform: rotate(45deg);
+}
+
+.btnClose span:last-child {
+    transform: rotate(-45deg);
+}
+.filters{
+    position: absolute;
+    top: 10px;
+    left: 10px; 
+    width: 30px;
+    width: 30px;
+    height: 30px;
+    color: rgba(0, 0, 0, 0.87);
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0.15px;
+    text-align: left;
+}
+.selects{
+    position: absolute;
+    top: 80px;
+    left: 35px;
+}
+.selects > * {
+    margin-top: 10px;
+}

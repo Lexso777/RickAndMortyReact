@@ -26,6 +26,9 @@ html,body
 	-moz-text-size-adjust:100%;
 	-webkit-text-size-adjust:100%;
 }
+body {
+    margin: 0; /* Перекрытие отступов по умолчанию */
+}
 
 input,button,textarea{font-family:inherit;}
 
@@ -40,6 +43,6 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 .wrapper{
-	max-width: 1200px;
+	max-width: 1000px;
 	margin: 0 auto;
 }
