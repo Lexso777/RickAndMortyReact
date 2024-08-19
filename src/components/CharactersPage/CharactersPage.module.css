@@ -9,7 +9,7 @@
 }
 .filters{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 40px;
     text-align: center;
     flex-wrap: wrap;
@@ -47,6 +47,18 @@
 .moreFilters{
     display: none;
 }
+.characters__container{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.btn_showMore{
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
 @media (max-width: 960px) {
     .filters {
         display: grid;
@@ -67,6 +79,12 @@
     }
 }
 @media (max-width: 480px) {
+    .characters__container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     .species{
         display: none;
     }

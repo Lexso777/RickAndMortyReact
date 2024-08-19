@@ -1,0 +1,15 @@
+.btn{
+    width: 146px;
+    height: 36px;
+    border-radius: 4px;
+    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.14),0px 1px 18px 0px rgba(0, 0, 0, 0.12),0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+    background: rgb(242, 249, 254);
+    color: rgb(33, 150, 243);
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 1.25px;
+    text-align: center;
+    text-transform: uppercase;
+}
