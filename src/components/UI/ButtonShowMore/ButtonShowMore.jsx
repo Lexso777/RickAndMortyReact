@@ -1,9 +1,10 @@
 import React from 'react';
 import style from './ButtonShowMore.module.css'
 
-const ButtonShowMore = () => {
+const ButtonShowMore = ({onClick}) => {
+
     return (
-        <button className={style.btn}>
+        <button type='button' className={style.btn} onClick={onClick}>
             LOAD MORE
         </button>
     );
