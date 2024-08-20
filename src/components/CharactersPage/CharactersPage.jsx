@@ -1,87 +1,80 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ReactComponent as Logo } from '../../assets/svg/RickAndMortyCharacterPage.svg'
 import style from './CharactersPage.module.css'
-import Module from '../UI/Module/Module';
-import Species from '../UI/Select/Species';
-import Status from '../UI/Select/Status';
-import Gender from '../UI/Select/Gender';
 import { fetchCharacters } from '../../Redux/slices/CharactersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import CharactersCard from '../UI/Cards/Characters/CharactersCard';
 import ButtonShowMore from '../UI/ButtonShowMore/ButtonShowMore';
 import { getCharacterGender, getCharacterName, getCharacterSpecies, getCharacterStatus } from '../../Redux/slices/filtersSlice';
-import Filter from '../UI/Filter/Filter';
+import FiltersField from '../FiltersField/FiltersField';
+import AdvancedFilterModule from '../AdvancedFilterModule/AdvancedFilterModule';
 
 const CharactersPage = () => {
 
     const dispatch = useDispatch();
-    const { fetchData , status } = useSelector((state) => state.CharactersPageSlice);
-    const {characterName, characterStatus, characterGender, characterSpecies} = useSelector((state) => state.filtersSlice);
+    const { fetchData, status } = useSelector((state) => state.CharactersPageSlice);
+    const { characterName, characterStatus, characterGender, characterSpecies } = useSelector((state) => state.filtersSlice);
 
 
-    const [page, setPage] = useState(1);
     const [moreFiltersOpen, setMoreFiltersOpen] = useState(false);
+    const [page, setPage] = useState(1);
 
-    const characters = fetchData.results;
 
-    const toggleModule = () => {
+    useEffect(() => {
+        dispatch(fetchCharacters({ page, characterName, characterStatus, characterGender, characterSpecies }));
+    }, [dispatch, page, characterName, characterStatus, characterGender, characterSpecies])
+
+
+    const toggleAdvancedFilters = () => {
         setMoreFiltersOpen(!moreFiltersOpen)
     }
 
-    useEffect(() => {
-        dispatch(fetchCharacters({page , characterName, characterStatus, characterGender, characterSpecies}));
-    }, [dispatch, page , characterName, characterStatus, characterGender, characterSpecies])
-
-
-
-    const nextPage = () => {    
-        setPage(page + 1);
+    const nextPage = () => {
+        setPage((perv) => perv + 1);
     }
 
-    const searchByName = (event) => {
-        dispatch(getCharacterName(event));
-        setPage(1);
-    }
-
-    const searchStatus = (status) => {
-        dispatch(getCharacterStatus(status))
-        setPage(1);
-    }
-    const searchGender = (gender) => {
-        dispatch(getCharacterGender(gender))
-        setPage(1);
-    }
-    const searchSpecies = (species) => {
-        dispatch(getCharacterSpecies(species))
-        setPage(1);
-    }
+    const updateFilter = useCallback((filterType, value) => {
+        switch (filterType) {
+            case 'name':
+                dispatch(getCharacterName(value));
+                break;
+            case 'status':
+                dispatch(getCharacterStatus(value));
+                break;
+            case 'gender':
+                dispatch(getCharacterGender(value));
+                break;
+            case 'species':
+                dispatch(getCharacterSpecies(value));
+                break;
+            default:
+                break;
+        }
+        setPage(1)
+    },[dispatch])
 
     return (
         <div className={style.charactersPage__container}>
             <div className={style.logo}><Logo /></div>
-            <div className={style.filters}>
-                <Filter name={characterName} searchByName={searchByName}/>
-                <div className={style.species}><Species onChangeSpecies={searchSpecies}/></div>
-                <div className={style.gender}><Gender onChangeGender={searchGender}/></div>
-                <div className={style.status}><Status onChangeStatus={searchStatus}/></div>
-            </div>
-            <div className={`${style.moreFiltersBtn} ${moreFiltersOpen ? style.open : ""}`}>
-                <button className={`${style.moreFilters} ${moreFiltersOpen ? style.open : ""}`}
-                    onClick={toggleModule}>
-                    ADVANCED FILTERS
-                </button>
-                {moreFiltersOpen ?
-                    <Module toggle={toggleModule}>
-                        <Species onChangeSpecies={searchSpecies} />
-                        <Gender onChangeGender={searchGender} />
-                        <Status onChangeStatus={searchStatus}/>
-                    </Module> : ''}
-            </div>
+            <FiltersField
+                characterName={characterName}
+                searchByName={(value) => updateFilter('name', value)}
+                searchSpecies={(value) => updateFilter('species', value)}
+                searchGender={(value) => updateFilter('gender', value)}
+                searchStatus={(value) => updateFilter('status', value)}
+            />
+            <AdvancedFilterModule
+                moreFiltersOpen={moreFiltersOpen}
+                toggleModule={toggleAdvancedFilters}
+                searchSpecies={(value) => updateFilter('species', value)}
+                searchGender={(value) => updateFilter('gender', value)}
+                searchStatus={(value) => updateFilter('status', value)}
+            />
             <div className={style.characters__container}>
                 {status === 'loading' && <div>Loading...</div>}
                 {status === 'reject' && <div>No characters found</div>}
-                {status === 'resolve' && characters && characters.length > 0 ? (
-                    characters.map(c => <CharactersCard key={c.id} character={c} />)
+                {status === 'resolve' && fetchData.results && fetchData.results.length > 0 ? (
+                    fetchData.results.map(c => <CharactersCard key={c.id} character={c} />)
                 ) : null}
             </div>
             <div className={style.btn_showMore}><ButtonShowMore onClick={nextPage} /></div>

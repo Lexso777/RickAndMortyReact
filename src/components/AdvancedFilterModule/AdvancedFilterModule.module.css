@@ -1,0 +1,41 @@
+.moreFiltersBtn{
+    display: none;
+}
+.moreFilters{
+    display: none;
+}
+@media (max-width: 480px) {
+    .moreFiltersBtn{
+       display: flex;
+       justify-content: center;
+    }
+    .moreFiltersBtn.open{
+        background-color: #0000006c;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .moreFilters{
+        display: block;
+        margin-top: 16px;
+        border-radius: 4px;
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24),0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+        background: rgb(227, 242, 253);
+        width: 240px;
+        height: 56px;
+        text-align: center;
+        color: rgb(33, 150, 243);
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 1.25px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .moreFilters.open{
+        display: none;
+    }
+}
