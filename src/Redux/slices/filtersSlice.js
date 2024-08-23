@@ -7,6 +7,11 @@ const initialState = {
     characterGender : '',
     characterStatus : '',
     characterSpecies : '',
+
+    locationName : '',
+    locationType : '',
+    locationDimension : '',
+
 }
 
 export const filtersSlice = createSlice({
@@ -24,11 +29,28 @@ export const filtersSlice = createSlice({
         },
         getCharacterSpecies(state, action){
             state.characterSpecies = action.payload;
+        },
+        getLocationName(state, action){
+            state.locationName = action.payload;
+        },
+        getLocationType(state, action){
+            state.locationType = action.payload;
+        },
+        getLocationDimension(state, action){
+            state.locationDimension = action.payload;
         }
     }
 })
 
-export const {getCharacterName, getCharacterStatus, getCharacterGender, getCharacterSpecies} = filtersSlice.actions;
+export const {
+    getCharacterName, 
+    getCharacterStatus, 
+    getCharacterGender, 
+    getCharacterSpecies, 
+    getLocationName, 
+    getLocationType, 
+    getLocationDimension
+} = filtersSlice.actions;
 
 
 export default filtersSlice.reducer

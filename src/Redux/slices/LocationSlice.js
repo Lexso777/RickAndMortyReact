@@ -4,16 +4,16 @@ import axios from 'axios'
 
 export const fetchLocations = createAsyncThunk(
     'LocationPage/fetchCharacters',
-    async({page}, {rejectWithValue}) => {
+    async( {page, locationName, locationType, locationDimension} ,  {rejectWithValue}) => {
         try{
-            const api = ``;
+            const api = `https://rickandmortyapi.com/api/location/?page=${page}&name=${locationName}&type=${locationType}&dimension=${locationDimension}`;
             const responce = await axios.get(api);
 
             if(responce.data.results.length === 0){
                 return  rejectWithValue('No Locations found');
             } 
 
-            return responce.data;
+            return responce.data
 
         }catch(err){
             return rejectWithValue(err.message);
