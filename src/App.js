@@ -3,6 +3,7 @@ import './App.css';
 import CharactersPage from './components/CharactersPage/CharactersPage';
 import Header from "./components/Header/Header"
 import CharactersDetailPage from './components/Characters-detailPage/CharactersDetailPage';
+import LocationsPage from './components/LocationsPage/LocationsPage';
 
 function App() {
   return (
@@ -12,8 +13,10 @@ function App() {
         <div className="wrapper">
           <Routes>
             <Route path='/' element={<CharactersPage />} />
-            <Route path='/characters' element={<CharactersPage />}/>
-            <Route path='/characters-detail/:id' element={<CharactersDetailPage />}/>
+            <Route path='/characters' element={<CharactersPage />} />
+            <Route path='/characters-detail/:id' element={<CharactersDetailPage />} />
+
+            <Route path='/locations' element={<LocationsPage />} />
           </Routes>
         </div>
       </div>

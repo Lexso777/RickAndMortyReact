@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './Select.module.css'
 
-const Species = ({onChangeSpecies}) => {
+const Species = ({searchSpecies}) => {
     return (
         <select
-        onChange={(e)=> onChangeSpecies(e.currentTarget.value)}
+        onChange={(e)=> searchSpecies(e.currentTarget.value)}
          className={style.select} 
          defaultValue="">
             <option value="">Species</option>

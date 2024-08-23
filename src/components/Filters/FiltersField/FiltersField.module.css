@@ -18,15 +18,6 @@
 
 
 @media (max-width: 480px) {
-    .species{
-        display: none;
-    }
-    .status{
-        display: none;
-    }
-    .gender{
-        display: none;
-    }
     .filters{
         text-align: center;
         display: flex;
