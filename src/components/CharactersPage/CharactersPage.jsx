@@ -6,8 +6,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import CharactersCard from '../UI/Cards/Characters/CharactersCard';
 import ButtonShowMore from '../UI/ButtonShowMore/ButtonShowMore';
 import { getCharacterGender, getCharacterName, getCharacterSpecies, getCharacterStatus } from '../../Redux/slices/filtersSlice';
-import FiltersField from '../FiltersField/FiltersField';
+import FiltersField from '../Filters/FiltersField/FiltersField';
 import AdvancedFilterModule from '../AdvancedFilterModule/AdvancedFilterModule';
+import Species from '../UI/Select/Species';
+import Gender from '../UI/Select/Gender';
+import Status from '../UI/Select/Status';
+import CharactersFilters from '../Filters/CharactersFilters';
+
+
+
 
 const CharactersPage = () => {
 
@@ -51,25 +58,27 @@ const CharactersPage = () => {
                 break;
         }
         setPage(1)
-    },[dispatch])
+    }, [dispatch])
+
+
 
     return (
         <div className={style.charactersPage__container}>
             <div className={style.logo}><Logo /></div>
-            <FiltersField
-                characterName={characterName}
-                searchByName={(value) => updateFilter('name', value)}
-                searchSpecies={(value) => updateFilter('species', value)}
-                searchGender={(value) => updateFilter('gender', value)}
-                searchStatus={(value) => updateFilter('status', value)}
-            />
+            <FiltersField>
+                <CharactersFilters 
+                    characterName={characterName} 
+                    updateFilter={updateFilter} 
+                />
+            </FiltersField>
             <AdvancedFilterModule
                 moreFiltersOpen={moreFiltersOpen}
                 toggleModule={toggleAdvancedFilters}
-                searchSpecies={(value) => updateFilter('species', value)}
-                searchGender={(value) => updateFilter('gender', value)}
-                searchStatus={(value) => updateFilter('status', value)}
-            />
+            >
+                <Species searchSpecies={(value) => updateFilter('species', value)} />
+                <Gender searchGender={(value) => updateFilter('gender', value)} />
+                <Status searchStatus={(value) => updateFilter('status', value)} />
+            </AdvancedFilterModule>
             <div className={style.characters__container}>
                 {status === 'loading' && <div>Loading...</div>}
                 {status === 'reject' && <div>No characters found</div>}

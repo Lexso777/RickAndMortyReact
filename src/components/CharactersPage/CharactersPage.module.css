@@ -38,4 +38,8 @@
     .logo{
         margin-top: 0;
     }
+    .extrafilters{
+        display: none;
+    }
+    
 }

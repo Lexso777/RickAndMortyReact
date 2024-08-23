@@ -1,13 +1,14 @@
 import style from "./Header.module.css";
 import { ReactComponent as Logo } from "../../assets/svg/headerLogo.svg";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
 
     const [open, setOpen] = useState(false);
 
     const toggleMenu = () => {
-        setOpen(!open); 
+        setOpen(!open);
     };
 
     // useEffect(() => {
@@ -24,28 +25,34 @@ const Header = () => {
                 <div className={style.logo}><Logo /></div>
                 <ul className={`${style.header__menu__container} ${open ? style.open : ""}`}>
                     <li className={style.header__menu__item}>
-                        <div to={'characters'} 
-                            onClick={() => {
-                                toggleMenu(false);
-                            }}>
-                            Characters
-                        </div>
+                        <NavLink to={'/characters'}>
+                            <div to={'characters'}
+                                onClick={() => {
+                                    toggleMenu(false);
+                                }}>
+                                Characters
+                            </div>
+                        </NavLink>
                     </li>
                     <li className={style.header__menu__item}>
-                        <div to={'locations'} 
-                            onClick={() => {
-                                toggleMenu(false); 
-                            }}>
-                            Locations
-                        </div>
+                        <NavLink to={'/locations'}>
+                            <div to={'locations'}
+                                onClick={() => {
+                                    toggleMenu(false);
+                                }}>
+                                Locations
+                            </div>
+                        </NavLink>
                     </li>
                     <li className={style.header__menu__item}>
-                        <div to={'episodes'} 
-                            onClick={() => {
-                                toggleMenu(false); 
-                            }}>
-                            Episodes
-                        </div>
+                        <NavLink to={'/episodes'}>
+                            <div to={'episodes'}
+                                onClick={() => {
+                                    toggleMenu(false);
+                                }}>
+                                Episodes
+                            </div>
+                        </NavLink>
                     </li>
                 </ul>
 

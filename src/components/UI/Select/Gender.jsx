@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './Select.module.css'
 
-const Gender = ({onChangeGender}) => {
+const Gender = ({searchGender}) => {
     return (
         <select
-         onChange={(e)=> onChangeGender(e.currentTarget.value)}   
+         onChange={(e)=> searchGender(e.currentTarget.value)}   
          className={style.select} 
          defaultValue="">
             <option value="">Gender</option>

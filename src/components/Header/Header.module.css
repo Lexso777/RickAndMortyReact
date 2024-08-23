@@ -37,6 +37,12 @@
     text-align: center;
     margin-right: 10px;
 }
+.header__menu__item a{
+    color: rgb(0, 0, 0);
+}
+.header__menu__item div{
+    font-size: 18px;
+}
 
 .burger_btn {
     display: none;

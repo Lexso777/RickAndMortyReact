@@ -1,17 +1,13 @@
 import React from 'react';
 import style from './AdvancedFilterModule.module.css'
 import Module from '../UI/Module/Module';
-import Species from '../UI/Select/Species';
-import Gender from '../UI/Select/Gender';
-import Status from '../UI/Select/Status';
+
 
 
 const AdvancedFilterModule = React.memo(({
     moreFiltersOpen,
     toggleModule,
-    searchSpecies,
-    searchGender,
-    searchStatus
+    children
 }) => {
 
     return (
@@ -22,9 +18,7 @@ const AdvancedFilterModule = React.memo(({
             </button>
             {moreFiltersOpen ?
                 <Module toggle={toggleModule}>
-                    <Species onChangeSpecies={searchSpecies} />
-                    <Gender onChangeGender={searchGender} />
-                    <Status onChangeStatus={searchStatus} />
+                    {children}
                 </Module> : ''}
         </div>
     );

@@ -12,7 +12,7 @@ const CharactersDetailPage = () => {
 
     const { character, episodes, locationId, status } = useSelector((state) => state.CharacterDetailSlice);
 
-
+   
 
     useEffect(() => {
         dispatch(fetchCharacterInfo({ id }));
@@ -62,7 +62,7 @@ const CharactersDetailPage = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className={style.Episodes}>
+                        <div className={style.Informations}>
                             <div className={style.title}>Episodes</div>
                             <ul className={style.ul}>
                                 {episodes.map((e) =>
