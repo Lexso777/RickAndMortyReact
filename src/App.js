@@ -4,6 +4,7 @@ import CharactersPage from './components/CharactersPage/CharactersPage';
 import Header from "./components/Header/Header"
 import CharactersDetailPage from './components/Characters-detailPage/CharactersDetailPage';
 import LocationsPage from './components/LocationsPage/LocationsPage';
+import LocationDetailPage from './components/Location-detailPage/LocationDetailPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path='/characters-detail/:id' element={<CharactersDetailPage />} />
 
             <Route path='/locations' element={<LocationsPage />} />
+            <Route path='/locations-detail/:id' element={<LocationDetailPage/>} />
           </Routes>
         </div>
       </div>

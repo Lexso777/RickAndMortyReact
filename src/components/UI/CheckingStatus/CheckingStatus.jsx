@@ -10,8 +10,11 @@ const CheckingStatus = ({status, fetchData, children}) => {
     if(status === 'resolve' && fetchData.results && fetchData.results.length > 0){
         return children
     }
+    if(status === 'resolve' && fetchData && fetchData.length > 0){
+        return children
+    }
 
-    return null;
-};
+    return <div>There's nothing here</div>;
+};  
 
 export default CheckingStatus;
