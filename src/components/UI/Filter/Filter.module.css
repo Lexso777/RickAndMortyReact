@@ -25,3 +25,12 @@
     text-align: left;
     padding-left: 40px;
 }
+.logfilter{
+    width: 326px;
+}
+
+@media (max-width: 769px) {
+    .filterByName{
+        width: 240px;
+    }  
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Filter.module.css'
 import { ReactComponent as Glass } from '../../../assets/svg/magnifyingGlass.svg'
 
-const Filter = ({name, searchByName}) => {
+const Filter = ({name, searchByName, logfilter}) => {
     return (
         <div className={style.filterGroup}>
             <div className={style.glass__svg}><Glass /></div>
