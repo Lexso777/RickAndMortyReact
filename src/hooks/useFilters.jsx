@@ -5,6 +5,7 @@ import {
     getCharacterName,
     getCharacterSpecies,
     getCharacterStatus,
+    getEpisodesName,
     getLocationDimension,
     getLocationName,
     getLocationType
@@ -38,6 +39,9 @@ export const useFilters = () => {
                 break;
             case 'locationDimension':
                 dispatch(getLocationDimension(value));
+                break;
+            case 'episodesName':
+                dispatch(getEpisodesName(value));
                 break;
             default:
                 break;

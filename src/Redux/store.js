@@ -4,6 +4,7 @@ import filtersSlice from './slices/filtersSlice';
 import CharacterDetailSlice from './slices/CharacterDetailSlice';
 import  LocationPageSlice  from './slices/LocationSlice';
 import LocationDetailSlice from './slices/LocationDetailSlice';
+import  EpisodesPageSlice  from './slices/EpisodesSlice';
 
 
 export const store = configureStore({
@@ -12,7 +13,8 @@ export const store = configureStore({
         filtersSlice, 
         CharacterDetailSlice,
         LocationPageSlice, 
-        LocationDetailSlice
+        LocationDetailSlice,
+        EpisodesPageSlice
     }
 })
 

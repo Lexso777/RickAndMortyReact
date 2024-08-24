@@ -2,15 +2,15 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 
-export const fetchLocations = createAsyncThunk(
-    'LocationPage/fetchLocations',
-    async( {page, locationName, locationType, locationDimension} ,  {rejectWithValue}) => {
+export const fetchEpisodes = createAsyncThunk(
+    'EpisodesPage/fetchEpisodes',
+    async( { page, episodesName } ,  {rejectWithValue}) => {
         try{
-            const api = `https://rickandmortyapi.com/api/location/?page=${page}&name=${locationName}&type=${locationType}&dimension=${locationDimension}`;
+            const api = `https://rickandmortyapi.com/api/episode?page=${page}`;
             const responce = await axios.get(api);
 
             if(responce.data.results.length === 0){
-                return  rejectWithValue('No Locations found');
+                return  rejectWithValue('No Episodes found');
             } 
 
             return responce.data
@@ -28,15 +28,15 @@ const initialState = {
   error : null,
 }
 
-export const LocationPageSlice = createSlice({
-  name: 'LocationPage',
+export const EpisodesPageSlice = createSlice({
+  name: 'EpisodesPage',
   initialState,
   reducers: {},
   extraReducers : (buider) => {
-    buider.addCase(fetchLocations.pending, (state) => {
+    buider.addCase(fetchEpisodes.pending, (state) => {
         state.status = 'loading';
     });
-    buider.addCase(fetchLocations.fulfilled, (state, action) => {
+    buider.addCase(fetchEpisodes.fulfilled, (state, action) => {
         state.status = 'resolve';
         if(action.meta.arg.page === 1){
             state.fetchData = action.payload
@@ -45,12 +45,11 @@ export const LocationPageSlice = createSlice({
             state.fetchData.results = [...state.fetchData.results, ...action.payload.results];
         }
     });
-    buider.addCase(fetchLocations.rejected, (state, action) => {
+    buider.addCase(fetchEpisodes.rejected, (state, action) => {
         state.status = 'reject';
         state.error = action.payload;
     });
   }
 })
 
-
-export default LocationPageSlice.reducer
+export default EpisodesPageSlice.reducer

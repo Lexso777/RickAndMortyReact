@@ -12,6 +12,8 @@ const initialState = {
     locationType : '',
     locationDimension : '',
 
+    episodesName : '',
+
 }
 
 export const filtersSlice = createSlice({
@@ -38,6 +40,9 @@ export const filtersSlice = createSlice({
         },
         getLocationDimension(state, action){
             state.locationDimension = action.payload;
+        },
+        getEpisodesName(state, action){
+            state.episodesName = action.payload;
         }
     }
 })
@@ -49,7 +54,8 @@ export const {
     getCharacterSpecies, 
     getLocationName, 
     getLocationType, 
-    getLocationDimension
+    getLocationDimension,
+    getEpisodesName,
 } = filtersSlice.actions;
 
 
