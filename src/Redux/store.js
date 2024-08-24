@@ -5,6 +5,7 @@ import CharacterDetailSlice from './slices/CharacterDetailSlice';
 import  LocationPageSlice  from './slices/LocationSlice';
 import LocationDetailSlice from './slices/LocationDetailSlice';
 import  EpisodesPageSlice  from './slices/EpisodesSlice';
+import EpisodesDetailSlice from './slices/EpisodesDetailSlice';
 
 
 export const store = configureStore({
@@ -14,7 +15,8 @@ export const store = configureStore({
         CharacterDetailSlice,
         LocationPageSlice, 
         LocationDetailSlice,
-        EpisodesPageSlice
+        EpisodesPageSlice,
+        EpisodesDetailSlice
     }
 })
 

@@ -18,7 +18,9 @@ const LocationDetailPage = () => {
 
 
     if(!location){
-        return <div>...Load</div>
+        return(
+            <div>...Load</div>
+        )
     }
 
     return (
