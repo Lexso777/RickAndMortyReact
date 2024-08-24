@@ -5,6 +5,7 @@ import Header from "./components/Header/Header"
 import CharactersDetailPage from './components/Characters-detailPage/CharactersDetailPage';
 import LocationsPage from './components/LocationsPage/LocationsPage';
 import LocationDetailPage from './components/Location-detailPage/LocationDetailPage';
+import EpisodesPage from './components/EpisodesPage/EpisodesPage';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
 
             <Route path='/locations' element={<LocationsPage />} />
             <Route path='/locations-detail/:id' element={<LocationDetailPage/>} />
+
+            <Route path='/episodes' element={<EpisodesPage />} />
           </Routes>
         </div>
       </div>
