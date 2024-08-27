@@ -6,7 +6,19 @@ export const fetchEpisodes = createAsyncThunk(
     'EpisodesPage/fetchEpisodes',
     async( { page, episodesName } ,  {rejectWithValue}) => {
         try{
-            const api = `https://rickandmortyapi.com/api/episode?page=${page}`;
+            const apiBase = `https://rickandmortyapi.com/api/episode?page=${page}`
+
+            let api; 
+
+            const episodeRegex = /^S\d{2}E\d{2}$/i;
+
+
+            if(episodeRegex.test(episodesName)){
+                api = `${apiBase}&episode=${episodesName}`;
+            } else {
+                api = `${apiBase}&name=${episodesName}`;
+            }
+
             const responce = await axios.get(api);
 
             if(responce.data.results.length === 0){

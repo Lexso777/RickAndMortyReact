@@ -1,3 +1,6 @@
+.locationDetail__container{
+    position: relative;
+}
 .location__name{
     color: rgb(8, 31, 50);
     font-family: Roboto;

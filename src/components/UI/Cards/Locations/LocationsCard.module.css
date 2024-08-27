@@ -27,3 +27,17 @@
     line-height: 21px;
     letter-spacing: 0.25px;
 }
+
+.card__container:hover{
+    background-color: rgba(0, 0, 0, 0.781);
+}
+
+.location__name .location__type {
+    color: rgba(0, 0, 0, 0.87);
+    transition: color 0.3s ease;
+}
+
+.card__container:hover .location__name,
+.card__container:hover .location__type {
+    color: white;
+}

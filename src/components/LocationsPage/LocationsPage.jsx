@@ -36,7 +36,11 @@ const LocationsPage = () => {
         <div className={style.locationsPage__container}>
             <div className={style.logo}><Logo /></div>
             <FiltersField>
-                <LocationsFilters locationName={locationName} updateFilter={updateFilter} filterWidth={'logfilter'}/>
+                <LocationsFilters 
+                placeholder={`Filter by name...`} 
+                locationName={locationName} 
+                updateFilter={updateFilter} 
+                customWidth={'326px'}/>
             </FiltersField>
 
             <AdvancedFilterModule moreFiltersOpen={moreFiltersOpen} toggleModule={toggleAdvancedFilters}>
@@ -49,7 +53,7 @@ const LocationsPage = () => {
                     {fetchData.results.map(l => <LocationsCard key={l.id} locations={l} />)}
                 </CheckingStatus>
             </div>
-            <div className={style.btn}><ButtonShowMore onClick={nextPage} /></div>
+            {fetchData.info.pages === page ? null : <div className={style.btn}><ButtonShowMore onClick={nextPage}/></div>}
         </div>
     );
 };

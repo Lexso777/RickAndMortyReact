@@ -5,6 +5,7 @@ import { fetchLocationInfo } from '../../Redux/slices/LocationDetailSlice';
 import style from './LocationDetailPage.module.css'
 import CharactersCard from '../UI/Cards/Characters/CharactersCard'
 import CheckingStatus from '../UI/CheckingStatus/CheckingStatus'
+import ArrowGoBack from '../UI/ArrowGoBack/ArrowGoBack';
 
 const LocationDetailPage = () => {
 
@@ -25,7 +26,7 @@ const LocationDetailPage = () => {
 
     return (
         <div className={style.locationDetail__container}>
-            <button>gobach</button>
+            <ArrowGoBack />
             <div className={style.location__name}>{location.name}</div>
             <div className={style.location__info}>
                 <div>

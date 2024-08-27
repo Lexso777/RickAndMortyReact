@@ -5,10 +5,10 @@ import Type from '../UI/Select/Type';
 import Dimension from '../UI/Select/Dimension';
 
 
-const LocationsFilters = ({locationName, updateFilter, filterWidth}) => {
+const LocationsFilters = ({locationName, updateFilter, placeholder, customWidth}) => {
     return (
         <>
-            <Filter name={locationName} searchByName={(value) => updateFilter('locationName', value)} filterWidth={filterWidth}/>
+            <Filter customWidth={customWidth} name={locationName} placeholder={placeholder} searchByName={(value) => updateFilter('locationName', value)}/>
             <div className={style.extrafilters}><Type searchType={(value) => updateFilter('locationType', value)}/></div>
             <div className={style.extrafilters}><Dimension searchDimension={(value) => updateFilter('locationDimension', value)}/></div>
         </>

@@ -37,7 +37,7 @@ const CharactersPage = () => {
         <div className={style.charactersPage__container}>
             <div className={style.logo}><Logo /></div>
             <FiltersField>
-                <CharactersFilters characterName={characterName} updateFilter={updateFilter}/>
+                <CharactersFilters placeholder={`Filter by name...`} characterName={characterName} updateFilter={updateFilter}/>
             </FiltersField>
 
             <AdvancedFilterModule  moreFiltersOpen={moreFiltersOpen} toggleModule={toggleAdvancedFilters}>
@@ -51,7 +51,7 @@ const CharactersPage = () => {
                     { fetchData.results.map(c => <CharactersCard key={c.id} character={c} />)}
                 </CheckingStatus>  
             </div>
-            <div className={style.btn_showMore}><ButtonShowMore onClick={nextPage} /></div>
+            {fetchData.info.pages === page ? null : <div className={style.btn_showMore}><ButtonShowMore onClick={nextPage}/></div>}
         </div>
     );
 };
