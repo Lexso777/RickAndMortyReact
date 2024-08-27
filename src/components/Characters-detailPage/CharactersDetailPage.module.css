@@ -1,9 +1,11 @@
 .charactersDetail{
     padding-bottom: 50px;
+    position: relative;
 }
 
 .charactersInfo{
     text-align: center;
+    margin-top: 20px;
 }
 
 .charactersInfo img{
@@ -83,8 +85,12 @@
 @media (max-width: 769px) {
     .generalInformation__container{
         display: block;
+
     }
     .Episodes{
+        margin-top: 20px;
+    }
+    .Informations{
         margin-top: 20px;
     }
 }
@@ -93,6 +99,7 @@
     .charactersInfo img{
         width: 146px;
         height: 148px;
+        margin-top: 40px;
     }
     .charactersInfo h2{
         font-size: 32px;
@@ -103,4 +110,5 @@
         margin-top: 32px;
         display: block;
     }
+
 }

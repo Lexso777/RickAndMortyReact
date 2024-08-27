@@ -25,19 +25,18 @@ const EpisodesPage = () => {
         
     },[dispatch, page, episodesName])
 
-
     return (
         <div className={style.episodePage__container}>
             <div className={style.logo}>< Logo /></div>
             <FiltersField>
-                <Filter  name={episodesName} searchByName={(value) => updateFilter('episodesName', value)} />      
+                <Filter customWidth={'500px'} placeholder={`Filter by name or episode (ex. S01 or S01E02)`}  name={episodesName} searchByName={(value) => updateFilter('episodesName', value)} />      
             </FiltersField>
             <div className={style.episodes__container}>
                 <CheckingStatus status={status} fetchData={fetchData}>
                 {fetchData.results.map(episodes => <EpisodesCard key={episodes.id} episodes={episodes}/>)}
                 </CheckingStatus>
             </div>
-            <div className={style.btn}><ButtonShowMore onClick={nextPage}/></div>
+            {fetchData.info.pages === page ? null : <div className={style.btn}><ButtonShowMore onClick={nextPage}/></div>}
         </div>
     );
 };

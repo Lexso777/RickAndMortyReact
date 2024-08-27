@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { fetchCharacterInfo } from '../../Redux/slices/CharacterDetailSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './CharactersDetailPage.module.css'
 import { ReactComponent as ArrowRight } from '../../assets/svg/chevron_right_24px.svg'
+import ArrowGoBack from '../UI/ArrowGoBack/ArrowGoBack';
+
 
 const CharactersDetailPage = () => {
 
@@ -12,7 +14,6 @@ const CharactersDetailPage = () => {
 
     const { character, episodes, locationId, status } = useSelector((state) => state.CharacterDetailSlice);
 
-   
 
     useEffect(() => {
         dispatch(fetchCharacterInfo({ id }));
@@ -38,7 +39,7 @@ const CharactersDetailPage = () => {
             {status === 'reject' && <div>No characters found</div>}
             {status === 'resolve' && characterDetails.length !== 0 &&
                 <div className={style.charactersDetail}>
-                    <button>goback</button>
+                    <ArrowGoBack />
                     <div className={style.charactersInfo}>
                         <img src={character.image} alt={character.name} />
                         <h2>{character.name}</h2>
@@ -57,7 +58,7 @@ const CharactersDetailPage = () => {
                                 <li className={style.li}>
                                     <div className={style.li_label}>Location</div>
                                     <div className={style.li_value}>{character.location.name}</div>
-                                    <div className={style.arrow__right}><ArrowRight /></div>
+                                    <div className={style.arrow__right}><NavLink to={`/locations-detail/${locationId}`}><ArrowRight /></NavLink></div>
                                     <div className={style.li_border}></div>
                                 </li>
                             </ul>
@@ -70,7 +71,7 @@ const CharactersDetailPage = () => {
                                         <div className={style.li_label}>{e.episode}</div>
                                         <div className={style.li_value}>{e.name}</div>
                                         <div className={style.li_value}>{e.air_date}</div>
-                                        <div className={style.arrow__right}><ArrowRight /></div>
+                                        <div className={style.arrow__right}><NavLink to={`/episodes-detail/${e.id}`}><ArrowRight /></NavLink></div>
                                         <div className={style.li_border}></div>
                                     </li>
                                 )}
